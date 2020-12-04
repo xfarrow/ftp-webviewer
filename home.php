@@ -14,7 +14,7 @@
 	$username = $_SESSION['username'];
 	$password = $_SESSION['pass'];
 	
-	$ftp_connection = ftp_connect(FTP_SERVER,FTP_PORT,FTP_TIMEOUT) or die("Could not connect to" . FTP_SERVER);
+	$ftp_connection = ftp_connect(FTP_SERVER,FTP_PORT,FTP_TIMEOUT) or die("Could not connect to " . FTP_SERVER);
 	
 	if(@ftp_login($ftp_connection,$username,$password)){
 		
@@ -89,12 +89,13 @@
 			<br>
 			<input type='submit' value='OK' style='margin-top:5px;'>
 			</form>";
+	
+	ftp_close($ftp_connection);
 			
 	}else{
 		header("Location: login.php?err=1");
 	}
-	
-	ftp_close($ftp_connection);
+
 ?>
 
 <script>

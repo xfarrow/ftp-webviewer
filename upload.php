@@ -17,7 +17,7 @@
 	$username = $_SESSION['username'];
 	$password = $_SESSION['pass'];
 	
-	$ftp_connection = ftp_connect(FTP_SERVER,FTP_PORT,FTP_TIMEOUT) or die("Could not connect to" . FTP_SERVER);
+	$ftp_connection = ftp_connect(FTP_SERVER,FTP_PORT,FTP_TIMEOUT) or die("Could not connect to " . FTP_SERVER);
 	
 	if(@ftp_login($ftp_connection,$username,$password)){
 		
@@ -31,6 +31,7 @@
 			}else{
 				echo "Unable to save ".$_FILES['inputFile']['name'][$i]."on the FTP server. Are you authorized to write?";
 			}
-		}	
+		}
+		ftp_close($ftp_connection);		
 	}
 ?>

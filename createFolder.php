@@ -15,5 +15,6 @@
 		}else{
 			echo "Unable to create folder :-( check permissions";
 		}
+		ftp_close($ftp_connection);
 	}
 ?>
